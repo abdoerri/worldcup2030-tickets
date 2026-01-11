@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 World Cup 2030 Morocco - Ticket System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Moroccan Zellige Pattern Overlay -->
+    <div class="moroccan-pattern"></div>
+    <div class="moroccan-border-top"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-emblem">
+                    <span class="emblem-star">★</span>
+                </div>
+                <div class="logo-text">
+                    <h1>كأس العالم</h1>
+                    <span class="logo-subtitle">MOROCCO 2030</span>
+                </div>
+            </div>
+            <nav class="nav main-nav">
+                <a href="#" class="nav-link active" data-section="home">
+                    <span class="nav-icon">🏠</span> Home
+                </a>
+                <a href="#" class="nav-link" data-section="matches">
+                    <span class="nav-icon">⚽</span> Matches
+                </a>
+                <a href="#" class="nav-link" data-section="tickets">
+                    <span class="nav-icon">🎫</span> Tickets
+                </a>
+                <a href="#" class="nav-link" data-section="bookings">
+                    <span class="nav-icon">📋</span> My Bookings
+                </a>
+                <a href="#" class="nav-link admin-link" data-section="admin" id="adminNavLink" style="display: none;">
+                    <span class="nav-icon">⚙️</span> Admin
+                </a>
+            </nav>
+            <!-- Exit Admin Button - outside nav so it stays visible when nav is hidden -->
+            <button class="btn btn-outline btn-sm exit-admin-btn" id="exitAdminBtn" onclick="exitAdminMode()"
+                style="display: none;">
+                ← Exit Admin
+            </button>
+            <div class="user-section">
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <div class="user-avatar">
+                        <span id="userInitial">A</span>
+                    </div>
+                    <span class="user-name" id="userName"></span>
+                    <button class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+                </div>
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="homeSection" class="section active">
+            <div class="hero">
+                <div class="hero-bg-pattern"></div>
+                <div class="hero-content">
+                    <div class="hero-badge">🇲🇦 FIFA WORLD CUP 2030</div>
+                    <h2 class="hero-title">
+                        <span class="title-arabic">مرحبا بكم</span>
+                        Welcome to <span class="text-gradient">Morocco</span>
+                    </h2>
+                    <p class="hero-subtitle">Experience the magic of football in the heart of Africa</p>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">🏟️</div>
+                            <span class="stat-number" id="totalStadiums">6</span>
+                            <span class="stat-label">Stadiums</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚽</div>
+                            <span class="stat-number" id="totalMatches">8</span>
+                            <span class="stat-label">Matches</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🌍</div>
+                            <span class="stat-number" id="totalTeams">16</span>
+                            <span class="stat-label">Teams</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎟️</div>
+                            <span class="stat-number" id="availableTickets">240</span>
+                            <span class="stat-label">Tickets</span>
+                        </div>
+                    </div>
+                    <button class="btn-ticket" onclick="showSection('matches')">
+                        <div class="ticket-left">
+                            <span class="ticket-icon">�</span>
+                        </div>
+                        <div class="ticket-content">
+                            <span class="ticket-text">BOOK YOUR TICKETS</span>
+                            <span class="ticket-subtext">Secure your seat now!</span>
+                        </div>
+                        <div class="ticket-right">
+                            <span class="ticket-arrow">→</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-flags">
+                        <span class="flag flag-1">🇲🇦</span>
+                        <span class="flag flag-2">🇧🇷</span>
+                        <span class="flag flag-3">🇫🇷</span>
+                        <span class="flag flag-4">🇦🇷</span>
+                        <span class="flag flag-5">🇪🇸</span>
+                        <span class="flag flag-6">🇩🇪</span>
+                    </div>
+                    <div class="trophy-container">
+                        <div class="trophy-glow"></div>
+                        <span class="trophy-icon">�</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participating Teams -->
+            <div class="teams-section">
+                <div class="section-title-container">
+                    <div class="moroccan-decoration left"></div>
+                    <h3 class="section-title">🌍 Participating Nations</h3>
+                    <div class="moroccan-decoration right"></div>
+                </div>
+                <div class="teams-grid" id="teamsGrid"></div>
+            </div>
+
+            <!-- Stadiums -->
+            <div class="stadiums-section">
+                <div class="section-title-container">
+                    <div class="moroccan-decoration left"></div>
+                    <h3 class="section-title">Host Cities</h3>
+                    <div class="moroccan-decoration right"></div>
+                </div>
+                <div class="stadiums-grid" id="stadiumsGrid"></div>
+            </div>
+        </section>
+
+        <!-- Matches Section -->
+        <section id="matchesSection" class="section">
+            <div class="section-header">
+                <h2><span class="header-icon">⚽</span> All Matches</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="GROUP_STAGE">Group Stage</button>
+                    <button class="filter-tab" data-filter="ROUND_OF_16">Round of 16</button>
+                    <button class="filter-tab" data-filter="QUARTER_FINAL">Quarter Finals</button>
+                    <button class="filter-tab" data-filter="SEMI_FINAL">Semi Finals</button>
+                    <button class="filter-tab" data-filter="FINAL">Final</button>
+                </div>
+            </div>
+            <div class="matches-list" id="matchesList"></div>
+        </section>
+
+        <!-- Tickets Section -->
+        <section id="ticketsSection" class="section">
+            <div class="section-header">
+                <h2><span class="header-icon">�</span> Available Tickets</h2>
+            </div>
+            <div class="tickets-container">
+                <div class="match-selector">
+                    <label>Select Match:</label>
+                    <select id="matchSelect" class="select-input">
+                        <option value="">-- Choose a match --</option>
+                    </select>
+                </div>
+                <div class="tickets-grid" id="ticketsGrid">
+                    <div class="empty-state">
+                        <div class="empty-ticket">
+                            <span>🎫</span>
+                        </div>
+                        <p>Select a match to view available tickets</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bookings Section -->
+        <section id="bookingsSection" class="section">
+            <div class="section-header">
+                <h2><span class="header-icon">📋</span> My Bookings</h2>
+            </div>
+            <div class="bookings-list" id="bookingsList">
+                <div class="empty-state" id="noBookings">
+                    <div class="empty-ticket">
+                        <span>📭</span>
+                    </div>
+                    <p>You don't have any bookings yet</p>
+                    <button class="btn btn-primary" onclick="showSection('matches')">Browse Matches</button>
+                </div>
+            </div>
+        </section>
+        <!-- Admin Section -->
+        <section id="adminSection" class="section">
+            <div class="admin-header">
+                <h2><span class="header-icon">⚙️</span> Admin Dashboard</h2>
+                <div class="admin-badge">ADMINISTRATOR</div>
+            </div>
+
+            <!-- Admin Stats Row -->
+            <div class="admin-stats">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon">👥</div>
+                    <div class="admin-stat-info">
+                        <span class="admin-stat-number" id="adminTotalUsers">0</span>
+                        <span class="admin-stat-label">Total Users</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon">📋</div>
+                    <div class="admin-stat-info">
+                        <span class="admin-stat-number" id="adminTotalBookings">0</span>
+                        <span class="admin-stat-label">Bookings</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon">🎫</div>
+                    <div class="admin-stat-info">
+                        <span class="admin-stat-number" id="adminTicketsSold">0</span>
+                        <span class="admin-stat-label">Tickets Sold</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon">🎟️</div>
+                    <div class="admin-stat-info">
+                        <span class="admin-stat-number" id="adminTicketsAvailable">0</span>
+                        <span class="admin-stat-label">Available</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card revenue">
+                    <div class="admin-stat-icon">💰</div>
+                    <div class="admin-stat-info">
+                        <span class="admin-stat-number" id="adminRevenue">$0</span>
+                        <span class="admin-stat-label">Revenue</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Tabs Navigation -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-admin-tab="inventory">
+                    🎫 Ticket Inventory
+                </button>
+                <button class="admin-tab" data-admin-tab="bookings">
+                    📋 Bookings
+                </button>
+                <button class="admin-tab" data-admin-tab="users">
+                    👥 Users
+                </button>
+                <button class="admin-tab" data-admin-tab="matches">
+                    ⚽ Matches
+                </button>
+                <button class="admin-tab" data-admin-tab="settings">
+                    🔧 Settings
+                </button>
+            </div>
+
+            <!-- Tab Content: Ticket Inventory -->
+            <div class="admin-tab-content active" id="adminTabInventory">
+                <div class="admin-panel">
+                    <div class="admin-panel-header">
+                        <h3>🎫 Ticket Inventory Management</h3>
+                        <div class="admin-actions-group">
+                            <button class="btn btn-success btn-sm" onclick="restockAllTickets()">
+                                📦 Restock All (+10 each)
+                            </button>
+                            <button class="btn btn-primary btn-sm" onclick="openModal('addTicketsModal')">
+                                + Add Tickets
+                            </button>
+                        </div>
+                    </div>
+                    <div class="inventory-filters">
+                        <select id="inventoryMatchFilter" class="select-input">
+                            <option value="all">All Matches</option>
+                        </select>
+                        <select id="inventoryCategoryFilter" class="select-input">
+                            <option value="all">All Categories</option>
+                            <option value="CATEGORY_1">Category 1 (Premium)</option>
+                            <option value="CATEGORY_2">Category 2 (Standard)</option>
+                            <option value="CATEGORY_3">Category 3 (Economy)</option>
+                        </select>
+                        <select id="inventoryStatusFilter" class="select-input">
+                            <option value="all">All Status</option>
+                            <option value="AVAILABLE">Available</option>
+                            <option value="SOLD">Sold</option>
+                            <option value="RESERVED">Reserved</option>
+                        </select>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Match</th>
+                                    <th>Category</th>
+                                    <th>Section</th>
+                                    <th>Price</th>
+                                    <th>Available</th>
+                                    <th>Sold</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminInventoryBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Bookings Management -->
+            <div class="admin-tab-content" id="adminTabBookings">
+                <div class="admin-panel">
+                    <div class="admin-panel-header">
+                        <h3>📋 All Bookings</h3>
+                        <div class="admin-actions-group">
+                            <button class="btn btn-outline btn-sm" onclick="exportBookings()">
+                                📥 Export CSV
+                            </button>
+                        </div>
+                    </div>
+                    <div class="inventory-filters">
+                        <input type="text" id="bookingSearchInput" class="search-input"
+                            placeholder="🔍 Search by reference or email...">
+                        <select id="bookingStatusFilter" class="select-input">
+                            <option value="all">All Status</option>
+                            <option value="CONFIRMED">Confirmed</option>
+                            <option value="PENDING">Pending</option>
+                            <option value="CANCELLED">Cancelled</option>
+                            <option value="REFUNDED">Refunded</option>
+                        </select>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Match</th>
+                                    <th>Tickets</th>
+                                    <th>Total</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminBookingsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: User Management -->
+            <div class="admin-tab-content" id="adminTabUsers">
+                <div class="admin-panel">
+                    <div class="admin-panel-header">
+                        <h3>👥 User Management</h3>
+                        <div class="admin-actions-group">
+                            <button class="btn btn-primary btn-sm" onclick="openModal('addUserModal')">
+                                + Add User
+                            </button>
+                        </div>
+                    </div>
+                    <div class="inventory-filters">
+                        <input type="text" id="userSearchInput" class="search-input" placeholder="🔍 Search users...">
+                        <select id="userRoleFilter" class="select-input">
+                            <option value="all">All Roles</option>
+                            <option value="user">Users</option>
+                            <option value="admin">Admins</option>
+                        </select>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Bookings</th>
+                                    <th>Total Spent</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminUsersBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Match Management -->
+            <div class="admin-tab-content" id="adminTabMatches">
+                <div class="admin-panel">
+                    <div class="admin-panel-header">
+                        <h3>⚽ Match Management</h3>
+                        <button class="btn btn-primary btn-sm" onclick="openModal('addMatchModal')">+ Add Match</button>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table" id="adminMatchesTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Match</th>
+                                    <th>Phase</th>
+                                    <th>Stadium</th>
+                                    <th>Date</th>
+                                    <th>Tickets Available</th>
+                                    <th>Tickets Sold</th>
+                                    <th>Revenue</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminMatchesBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Settings -->
+            <div class="admin-tab-content" id="adminTabSettings">
+                <div class="admin-panel">
+                    <div class="admin-panel-header">
+                        <h3>🔧 System Settings</h3>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h4>💵 Pricing Configuration</h4>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Category 1 (Premium) Price</label>
+                                    <input type="number" id="priceCategory1" value="500" class="settings-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category 2 (Standard) Price</label>
+                                    <input type="number" id="priceCategory2" value="300" class="settings-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category 3 (Economy) Price</label>
+                                    <input type="number" id="priceCategory3" value="150" class="settings-input">
+                                </div>
+                                <button class="btn btn-primary" onclick="savePricing()">Save Pricing</button>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h4>📧 Notification Settings</h4>
+                            <div class="settings-form">
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailBookingConfirm" checked>
+                                    <label for="emailBookingConfirm">Send booking confirmation emails</label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailReminders" checked>
+                                    <label for="emailReminders">Send match reminder emails</label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="emailMarketing">
+                                    <label for="emailMarketing">Send marketing emails</label>
+                                </div>
+                                <button class="btn btn-primary" onclick="saveNotifications()">Save Settings</button>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h4>🔐 Security</h4>
+                            <div class="settings-form">
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="require2FA">
+                                    <label for="require2FA">Require 2FA for admin accounts</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Session Timeout (minutes)</label>
+                                    <input type="number" id="sessionTimeout" value="30" class="settings-input">
+                                </div>
+                                <button class="btn btn-primary" onclick="saveSecurity()">Save Settings</button>
+                            </div>
+                        </div>
+                        <div class="settings-card danger-zone">
+                            <h4>⚠️ Danger Zone</h4>
+                            <div class="settings-form">
+                                <button class="btn btn-danger" onclick="clearAllData()">
+                                    🗑️ Clear All Test Data
+                                </button>
+                                <button class="btn btn-danger" onclick="resetSystem()">
+                                    🔄 Reset System
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Match Detail Modal -->
+    <div class="modal" id="matchDetailModal">
+        <div class="modal-content modal-xl">
+            <div class="modal-header">
+                <h3>⚽ Match Details</h3>
+                <button class="modal-close" onclick="closeModal('matchDetailModal')">&times;</button>
+            </div>
+            <div class="match-detail-content" id="matchDetailContent"></div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header moroccan-header">
+                <div class="modal-pattern"></div>
+                <h3>🔐 Welcome Back</h3>
+                <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>📧 Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>🔑 Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+                <div class="form-divider">
+                    <span>Demo Accounts</span>
+                </div>
+                <div class="demo-accounts">
+                    <button type="button" class="demo-btn" onclick="demoLogin('user')">
+                        👤 Demo User
+                    </button>
+                    <button type="button" class="demo-btn admin" onclick="demoLogin('admin')">
+                        ⚙️ Demo Admin
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header moroccan-header">
+                <div class="modal-pattern"></div>
+                <h3>📝 Create Account</h3>
+                <button class="modal-close" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="regFirstName" required placeholder="Ahmed">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="regLastName" required placeholder="Benali">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="regPhone" placeholder="+212 6 12 34 56 78">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header moroccan-header">
+                <div class="modal-pattern"></div>
+                <h3>🎫 Complete Booking</h3>
+                <button class="modal-close" onclick="closeModal('bookingModal')">&times;</button>
+            </div>
+
+            <!-- Step Indicators -->
+            <div class="booking-steps">
+                <div class="booking-step active" id="step1Indicator">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Verify</span>
+                </div>
+                <div class="booking-step" id="step2Indicator">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Payment</span>
+                </div>
+                <div class="booking-step" id="step3Indicator">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Confirm</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Captcha -->
+            <div class="booking-step-content active" id="bookingStep1">
+                <div class="captcha-container">
+                    <h4>🤖 Are you human?</h4>
+                    <p>Solve this simple math problem to continue:</p>
+                    <div class="captcha-challenge">
+                        <span class="captcha-question" id="captchaQuestion">5 + 3 = ?</span>
+                    </div>
+                    <input type="number" id="captchaAnswer" class="captcha-input" placeholder="Your answer">
+                    <button class="btn btn-primary btn-full" onclick="verifyCaptcha()">
+                        ✓ Verify & Continue
+                    </button>
+                    <button class="btn btn-outline btn-sm" onclick="refreshCaptcha()" style="margin-top: 0.5rem;">
+                        🔄 New Question
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Payment Information -->
+            <div class="booking-step-content" id="bookingStep2">
+                <div class="booking-summary" id="bookingSummary"></div>
+                <div class="payment-form">
+                    <h4>💳 Payment Information</h4>
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" id="cardName" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" id="cardCvv" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+                    <div class="payment-methods">
+                        <span>💳</span>
+                        <span>We accept: Visa, Mastercard, AMEX</span>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+                        <button class="btn btn-primary" onclick="validatePaymentAndConfirm()">
+                            Review Order →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="booking-step-content" id="bookingStep3">
+                <div class="confirmation-summary" id="confirmationSummary"></div>
+                <div class="booking-actions">
+                    <button class="btn btn-outline" onclick="goToStep(2)">← Edit Payment</button>
+                    <button class="btn btn-primary" id="confirmBookingBtn">
+                        <span class="btn-ticket-icon">🎫</span> Confirm & Pay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-pattern"></div>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="footer-star">★</span>
+                        <div>
+                            <h4>كأس العالم 2030</h4>
+                            <p>World Cup Morocco</p>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Experience football excellence in the heart of Africa</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h5>Host Cities</h5>
+                        <ul>
+                            <li>🏙️ Casablanca</li>
+                            <li>🏙️ Rabat</li>
+                            <li>🏙️ Marrakech</li>
+                            <li>🏙️ Tangier</li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#" onclick="showSection('matches')">Matches</a></li>
+                            <li><a href="#" onclick="showSection('tickets')">Tickets</a></li>
+                            <li><a href="#" onclick="showSection('bookings')">My Bookings</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h5>Contact</h5>
+                        <ul>
+                            <li>📧 tickets@morocco2030.com</li>
+                            <li>📞 +212 5 22 00 00 00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2030 FIFA World Cup Morocco. All rights reserved.</p>
+                <div class="footer-flags">
+                    <span>🇲🇦</span>
+                    <span>🇪🇸</span>
+                    <span>🇵🇹</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

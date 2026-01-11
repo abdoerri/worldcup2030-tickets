@@ -1,0 +1,3091 @@
+/* ========================================
+   World Cup 2030 Morocco - Enhanced Moroccan Style CSS
+   ======================================== */
+
+:root {
+    /* Moroccan Color Palette */
+    --morocco-red: #C1272D;
+    --morocco-red-dark: #8B1A1F;
+    --morocco-green: #006233;
+    --morocco-green-light: #00A855;
+    --morocco-gold: #C9A227;
+    --morocco-gold-light: #E8D48A;
+    --morocco-gold-dark: #8B6914;
+    --morocco-cream: #F5F0E6;
+    --morocco-terracotta: #C75B39;
+    --morocco-blue: #1E4D8C;
+
+    /* Dark Theme */
+    --bg-primary: #0A0F1C;
+    --bg-secondary: #111827;
+    --bg-card: #1A2332;
+    --bg-card-hover: #243044;
+
+    /* Text Colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, #C9A227 0%, #E8D48A 50%, #C9A227 100%);
+    --gradient-morocco: linear-gradient(135deg, var(--morocco-red), var(--morocco-green));
+    --gradient-moroccan-tile: linear-gradient(45deg, var(--morocco-red) 0%, var(--morocco-gold) 50%, var(--morocco-green) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 4px 20px rgba(201, 162, 39, 0.4);
+    --shadow-glow: 0 0 40px rgba(201, 162, 39, 0.3);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   Moroccan Patterns & Decorations
+   ======================================== */
+.moroccan-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.04;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='%23C9A227' stroke-width='1'/%3E%3Cpath d='M30 15L45 30L30 45L15 30L30 15z' fill='none' stroke='%23006233' stroke-width='0.5'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+}
+
+.moroccan-border-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-moroccan-tile);
+    z-index: 1001;
+}
+
+.moroccan-decoration {
+    width: 80px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='30' viewBox='0 0 80 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q20 0 40 15 Q60 30 80 15' fill='none' stroke='%23C9A227' stroke-width='2'/%3E%3Ccircle cx='40' cy='15' r='4' fill='%23C9A227'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.moroccan-decoration.left {
+    transform: scaleX(-1);
+}
+
+/* ========================================
+   Header
+   ======================================== */
+.header {
+    position: fixed;
+    top: 4px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, rgba(10, 15, 28, 0.98) 0%, rgba(10, 15, 28, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-emblem {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-gold);
+    position: relative;
+}
+
+.logo-emblem::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid var(--morocco-gold);
+    opacity: 0.5;
+}
+
+.emblem-star {
+    color: var(--morocco-green);
+    font-size: 1.5rem;
+}
+
+.logo-text h1 {
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    color: var(--morocco-gold);
+    line-height: 1.2;
+}
+
+.logo-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.nav {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.nav-link {
+    padding: 0.6rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-icon {
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(201, 162, 39, 0.1);
+}
+
+.nav-link.active {
+    color: var(--morocco-gold);
+    background: rgba(201, 162, 39, 0.15);
+}
+
+.nav-link.admin-link {
+    color: var(--morocco-red);
+}
+
+.nav-link.admin-link.active {
+    background: rgba(193, 39, 45, 0.15);
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--bg-primary);
+}
+
+.user-name {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn {
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--morocco-gold);
+    color: var(--morocco-gold);
+}
+
+.btn-outline:hover {
+    background: rgba(201, 162, 39, 0.1);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-danger {
+    background: var(--morocco-red);
+    color: white;
+}
+
+.btn-success {
+    background: var(--morocco-green);
+    color: white;
+}
+
+/* Ticket Style Button */
+.btn-ticket {
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid var(--morocco-gold);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 320px;
+}
+
+.btn-ticket::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    border-right: 2px dashed var(--morocco-gold);
+}
+
+.btn-ticket::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    border-left: 2px dashed var(--morocco-gold);
+}
+
+.btn-ticket:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-gold), var(--shadow-glow);
+    border-color: var(--morocco-gold-light);
+}
+
+.ticket-left {
+    padding: 1rem 1.5rem;
+    background: var(--gradient-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.ticket-content {
+    flex: 1;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 2px dashed var(--morocco-gold);
+    border-right: 2px dashed var(--morocco-gold);
+}
+
+.ticket-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+    letter-spacing: 1px;
+}
+
+.ticket-subtext {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.ticket-right {
+    padding: 1rem 1.5rem;
+    background: rgba(201, 162, 39, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-arrow {
+    font-size: 1.5rem;
+    color: var(--morocco-gold);
+    animation: arrowBounce 1s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+.main-content {
+    margin-top: 84px;
+    min-height: calc(100vh - 84px);
+    position: relative;
+    z-index: 1;
+}
+
+.section {
+    display: none;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    align-items: center;
+    position: relative;
+}
+
+.hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(0, 98, 51, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: rgba(201, 162, 39, 0.15);
+    border: 1px solid var(--morocco-gold);
+    border-radius: var(--radius-xl);
+    color: var(--morocco-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.title-arabic {
+    display: block;
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--morocco-gold);
+    margin-bottom: 0.5rem;
+}
+
+.text-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-moroccan-tile);
+}
+
+.stat-card:hover {
+    border-color: var(--morocco-gold);
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Hero Visual */
+.hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.floating-flags {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.flag {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.flag-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.flag-2 {
+    top: 5%;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+.flag-3 {
+    top: 40%;
+    left: 5%;
+    animation-delay: 1s;
+}
+
+.flag-4 {
+    top: 35%;
+    right: 5%;
+    animation-delay: 1.5s;
+}
+
+.flag-5 {
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.flag-6 {
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 2.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+.trophy-container {
+    position: relative;
+    z-index: 1;
+}
+
+.trophy-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.trophy-icon {
+    font-size: 8rem;
+    filter: drop-shadow(0 0 30px rgba(201, 162, 39, 0.5));
+    animation: trophyFloat 3s ease-in-out infinite;
+}
+
+@keyframes trophyFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.3;
+    }
+}
+
+/* ========================================
+   Section Titles
+   ======================================== */
+.section-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-icon {
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   TICKET-STYLE MATCH CARDS
+   ======================================== */
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.matches-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Main Ticket Container */
+.match-card {
+    position: relative;
+    display: flex;
+    background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+    border-radius: 16px;
+    overflow: visible;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Moroccan top border */
+.match-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient-moroccan-tile);
+    border-radius: 16px 16px 0 0;
+    z-index: 10;
+}
+
+/* Left semicircle cutout */
+.match-card::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    box-shadow: inset -3px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.match-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(201, 162, 39, 0.25), 0 0 30px rgba(201, 162, 39, 0.1);
+}
+
+/* Main ticket body */
+.ticket-body {
+    flex: 1;
+    padding: 0;
+    position: relative;
+}
+
+/* Ticket Header */
+.match-card-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(201, 162, 39, 0.15) 0%, transparent 100%);
+    border-bottom: 1px dashed rgba(201, 162, 39, 0.3);
+}
+
+.match-phase {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(201, 162, 39, 0.3);
+}
+
+.match-number {
+    color: var(--morocco-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Teams Section */
+.match-teams-container {
+    padding: 1.5rem 2rem;
+    position: relative;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.team {
+    text-align: center;
+    flex: 1;
+}
+
+.team-logo-container {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(201, 162, 39, 0.4);
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(201, 162, 39, 0.3);
+}
+
+.team-flag {
+    font-size: 2.5rem;
+}
+
+.team-name {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.team-code {
+    color: var(--morocco-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.match-vs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.vs-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--morocco-gold);
+    text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+}
+
+.win-probability {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+}
+
+.prob-home,
+.prob-away {
+    padding: 0.25rem 0.6rem;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.prob-home {
+    background: rgba(0, 168, 85, 0.25);
+    color: #00D26A;
+    border: 1px solid rgba(0, 168, 85, 0.3);
+}
+
+.prob-away {
+    background: rgba(193, 39, 45, 0.25);
+    color: #FF6B6B;
+    border: 1px solid rgba(193, 39, 45, 0.3);
+}
+
+/* Match Info Bar */
+.match-info {
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px dashed rgba(201, 162, 39, 0.2);
+    border-bottom: 1px dashed rgba(201, 162, 39, 0.2);
+}
+
+.match-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.match-info-item span:first-child {
+    font-size: 0.9rem;
+}
+
+/* Match Footer */
+.match-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tickets-available {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #00D26A;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.tickets-available span:first-child {
+    font-size: 1.1rem;
+}
+
+.match-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Ticket Stub (Right side) */
+.ticket-stub {
+    width: 100px;
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.05) 100%);
+    border-left: 2px dashed rgba(201, 162, 39, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem;
+    position: relative;
+}
+
+/* Right semicircle cutout */
+.ticket-stub::before {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    box-shadow: inset 3px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Perforation dots on the left edge of stub */
+.ticket-stub::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 10%;
+    bottom: 10%;
+    width: 2px;
+    background-image: repeating-linear-gradient(to bottom,
+            transparent,
+            transparent 6px,
+            rgba(201, 162, 39, 0.4) 6px,
+            rgba(201, 162, 39, 0.4) 12px);
+}
+
+.stub-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.stub-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.stub-barcode {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+}
+
+.stub-barcode span {
+    width: 2px;
+    background: var(--morocco-gold);
+    opacity: 0.6;
+}
+
+/* Button Styles for Ticket */
+.btn-details {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    border-radius: 8px;
+    color: var(--morocco-gold);
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    background: rgba(201, 162, 39, 0.15);
+    border-color: var(--morocco-gold);
+}
+
+.btn-book-ticket {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: 8px;
+    color: var(--bg-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-book-ticket::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-book-ticket:hover::before {
+    left: 100%;
+}
+
+.btn-book-ticket:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+}
+
+.tickets-available {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--morocco-green-light);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.match-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-book-ticket {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-book-ticket::before {
+    content: '✂';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.btn-book-ticket:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-details {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--morocco-gold);
+    border-radius: var(--radius-md);
+    color: var(--morocco-gold);
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    background: rgba(201, 162, 39, 0.1);
+}
+
+/* ========================================
+   Stadiums Grid
+   ======================================== */
+.stadiums-section {
+    margin-top: 4rem;
+}
+
+.stadiums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.stadium-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stadium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-moroccan-tile);
+}
+
+.stadium-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--morocco-gold);
+}
+
+.stadium-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.stadium-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.stadium-city {
+    color: var(--morocco-green-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.stadium-capacity {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ========================================
+   Filter Tabs
+   ======================================== */
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-tab {
+    padding: 0.6rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-tab:hover {
+    border-color: var(--morocco-gold);
+    color: var(--morocco-gold);
+}
+
+.filter-tab.active {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+    border-color: transparent;
+}
+
+/* ========================================
+   Tickets Section
+   ======================================== */
+.tickets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.match-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.match-selector label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.select-input {
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    min-width: 350px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-input:focus {
+    outline: none;
+    border-color: var(--morocco-gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.ticket-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.ticket-card::before,
+.ticket-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ticket-card::before {
+    left: -10px;
+    border-right: 1px dashed rgba(201, 162, 39, 0.3);
+}
+
+.ticket-card::after {
+    right: -10px;
+    border-left: 1px dashed rgba(201, 162, 39, 0.3);
+}
+
+.ticket-card:hover {
+    border-color: var(--morocco-gold);
+    transform: scale(1.02);
+}
+
+.ticket-card.selected {
+    border-color: var(--morocco-gold);
+    background: rgba(201, 162, 39, 0.1);
+    box-shadow: var(--shadow-gold);
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.ticket-category {
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.ticket-category.category_1 {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(232, 212, 138, 0.3));
+    color: var(--morocco-gold-light);
+    border: 1px solid var(--morocco-gold);
+}
+
+.ticket-category.category_2 {
+    background: rgba(0, 98, 51, 0.2);
+    color: var(--morocco-green-light);
+}
+
+.ticket-category.category_3 {
+    background: rgba(193, 39, 45, 0.2);
+    color: var(--morocco-red);
+}
+
+.ticket-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.ticket-details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+/* ========================================
+   Bookings Section
+   ======================================== */
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.booking-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.booking-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.booking-ref {
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--morocco-gold);
+    font-weight: 600;
+}
+
+.booking-date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.booking-status {
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.booking-status.confirmed {
+    background: rgba(0, 98, 51, 0.2);
+    color: var(--morocco-green-light);
+}
+
+.booking-status.pending {
+    background: rgba(201, 162, 39, 0.2);
+    color: var(--morocco-gold);
+}
+
+.booking-status.cancelled {
+    background: rgba(193, 39, 45, 0.2);
+    color: var(--morocco-red);
+}
+
+.booking-content {
+    padding: 1.5rem;
+}
+
+.booking-tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.booking-ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--morocco-gold);
+}
+
+.booking-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(201, 162, 39, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.booking-total-label {
+    font-weight: 600;
+}
+
+.booking-total-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.booking-actions {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   Admin Section
+   ======================================== */
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.admin-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.75rem;
+}
+
+.admin-badge {
+    background: var(--morocco-red);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.admin-stat-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    transition: all 0.3s ease;
+}
+
+.admin-stat-card:hover {
+    border-color: var(--morocco-gold);
+    transform: translateY(-3px);
+}
+
+.admin-stat-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(201, 162, 39, 0.1);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.admin-stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.admin-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.admin-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-panel {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.admin-panel-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-panel-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.admin-table-container {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-table th {
+    background: rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    font-size: 0.9rem;
+}
+
+.admin-table tr:hover td {
+    background: rgba(201, 162, 39, 0.05);
+}
+
+/* ========================================
+   Empty State
+   ======================================== */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+}
+
+.empty-ticket {
+    width: 100px;
+    height: 60px;
+    background: var(--bg-card);
+    border: 2px dashed var(--morocco-gold);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    opacity: 0.5;
+    position: relative;
+}
+
+.empty-ticket::before,
+.empty-ticket::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.empty-ticket::before {
+    left: -8px;
+}
+
+.empty-ticket::after {
+    right: -8px;
+}
+
+/* ========================================
+   Modals
+   ======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    max-width: 450px;
+    width: 100%;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    animation: modalSlide 0.3s ease;
+    overflow: hidden;
+}
+
+.modal-large {
+    max-width: 600px;
+}
+
+.modal-xl {
+    max-width: 900px;
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.modal-header.moroccan-header {
+    background: linear-gradient(135deg, rgba(193, 39, 45, 0.1), rgba(0, 98, 51, 0.1));
+}
+
+.modal-header.moroccan-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-moroccan-tile);
+}
+
+.modal-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--morocco-red);
+    background: rgba(193, 39, 45, 0.1);
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+.auth-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--morocco-gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+
+.form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.form-divider::before,
+.form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.demo-accounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.demo-btn {
+    padding: 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.demo-btn:hover {
+    border-color: var(--morocco-gold);
+    background: rgba(201, 162, 39, 0.1);
+}
+
+.demo-btn.admin {
+    border-color: rgba(193, 39, 45, 0.3);
+}
+
+.demo-btn.admin:hover {
+    border-color: var(--morocco-red);
+    background: rgba(193, 39, 45, 0.1);
+}
+
+/* ========================================
+   Match Detail Modal
+   ======================================== */
+.match-detail-content {
+    padding: 1.5rem;
+}
+
+.detail-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-lg);
+}
+
+.detail-team {
+    text-align: center;
+}
+
+.detail-team-flag {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-team-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.detail-vs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-vs-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.detail-probabilities {
+    display: flex;
+    gap: 1rem;
+}
+
+.prob-badge {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+}
+
+.prob-badge.home {
+    background: rgba(0, 98, 51, 0.2);
+    color: var(--morocco-green-light);
+}
+
+.prob-badge.draw {
+    background: rgba(201, 162, 39, 0.2);
+    color: var(--morocco-gold);
+}
+
+.prob-badge.away {
+    background: rgba(193, 39, 45, 0.2);
+    color: var(--morocco-red);
+}
+
+.lineup-section {
+    margin-top: 2rem;
+}
+
+.lineup-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lineups-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.lineup-team {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+}
+
+.lineup-team h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lineup-players {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lineup-player {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+}
+
+.player-number {
+    width: 28px;
+    height: 28px;
+    background: var(--morocco-gold);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.player-name {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.player-position {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   Toast Notifications
+   ======================================== */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.toast {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    color: white;
+    font-weight: 500;
+    animation: toastSlide 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 300px;
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes toastSlide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast.success {
+    background: var(--morocco-green);
+}
+
+.toast.error {
+    background: var(--morocco-red);
+}
+
+.toast.info {
+    background: var(--morocco-gold);
+    color: var(--bg-primary);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid rgba(201, 162, 39, 0.2);
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-moroccan-tile);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-star {
+    font-size: 2rem;
+    color: var(--morocco-gold);
+}
+
+.footer-logo h4 {
+    font-family: 'Amiri', serif;
+    font-size: 1.25rem;
+    color: var(--morocco-gold);
+}
+
+.footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-column h5 {
+    color: var(--morocco-gold);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-column a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--morocco-gold);
+}
+
+.footer-bottom {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-flags {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-visual {
+        order: -1;
+        min-height: 300px;
+    }
+
+    .btn-ticket {
+        margin: 0 auto;
+    }
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .matches-grid,
+    .matches-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .title-arabic {
+        font-size: 1.5rem;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .lineups-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   TEAMS HISTORY SECTION
+   ======================================== */
+.teams-section {
+    margin: 3rem 0;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.team-history-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #0f1419 100%);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.team-history-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-moroccan-tile);
+}
+
+.team-history-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--morocco-gold);
+    box-shadow: 0 15px 40px rgba(201, 162, 39, 0.2);
+}
+
+.team-history-flag {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.team-history-info {
+    margin-bottom: 1rem;
+}
+
+.team-history-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.team-history-code {
+    font-size: 0.85rem;
+    color: var(--morocco-gold);
+    font-weight: 600;
+}
+
+.team-history-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px dashed rgba(201, 162, 39, 0.2);
+    border-bottom: 1px dashed rgba(201, 162, 39, 0.2);
+}
+
+.history-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history-stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+    min-height: 1.5rem;
+}
+
+.history-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.team-best-finish {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+}
+
+/* ========================================
+   KNOCKOUT MATCH STYLING
+   ======================================== */
+.knockout-match {
+    border: 1px dashed rgba(201, 162, 39, 0.4);
+}
+
+.knockout-match .team-logo-container.tbd {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.02) 100%);
+    border: 2px dashed rgba(201, 162, 39, 0.4);
+}
+
+.knockout-match .team-name {
+    font-size: 0.85rem;
+    color: var(--morocco-gold);
+}
+
+.knockout-badge {
+    background: rgba(201, 162, 39, 0.15);
+    color: var(--morocco-gold);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .teams-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-history-flag {
+        font-size: 3rem;
+    }
+}
+
+/* ========================================
+   ADMIN DASHBOARD TABS & COMPONENTS
+   ======================================== */
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-lg);
+    flex-wrap: wrap;
+}
+
+.admin-tab {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-tab.active {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+}
+
+.admin-tab-content {
+    display: none;
+}
+
+.admin-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Admin Stats Enhancement */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-stat-card.revenue {
+    background: linear-gradient(135deg, rgba(0, 168, 85, 0.2) 0%, rgba(0, 98, 51, 0.1) 100%);
+    border-color: rgba(0, 168, 85, 0.3);
+}
+
+.admin-stat-card.revenue .admin-stat-number {
+    color: #00D26A;
+}
+
+/* Admin Actions Group */
+.admin-actions-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Inventory Filters */
+.inventory-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--morocco-gold);
+}
+
+/* Settings Grid */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.settings-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-card h4 {
+    margin-bottom: 1.5rem;
+    color: var(--morocco-gold);
+    font-size: 1.1rem;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.settings-input {
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: var(--morocco-gold);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-direction: row;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--morocco-gold);
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.settings-card.danger-zone {
+    border-color: rgba(193, 39, 45, 0.3);
+    background: rgba(193, 39, 45, 0.05);
+}
+
+.settings-card.danger-zone h4 {
+    color: var(--morocco-red);
+}
+
+/* Button Variants */
+.btn-success {
+    background: linear-gradient(135deg, #00A855, #006233);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 168, 85, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #C1272D, #8B1A1F);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(193, 39, 45, 0.3);
+}
+
+/* Admin Table Enhancements */
+.admin-table td .btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+.status-badge {
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.confirmed {
+    background: rgba(0, 168, 85, 0.2);
+    color: #00D26A;
+}
+
+.status-badge.pending {
+    background: rgba(201, 162, 39, 0.2);
+    color: var(--morocco-gold);
+}
+
+.status-badge.cancelled {
+    background: rgba(193, 39, 45, 0.2);
+    color: #FF6B6B;
+}
+
+.status-badge.refunded {
+    background: rgba(100, 100, 100, 0.2);
+    color: #999;
+}
+
+.role-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.role-badge.admin {
+    background: linear-gradient(135deg, var(--morocco-gold) 0%, var(--morocco-gold-dark) 100%);
+    color: var(--bg-primary);
+}
+
+.role-badge.user {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Inventory Progress Bars */
+.inventory-progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+}
+
+.inventory-progress-bar {
+    height: 100%;
+    background: var(--gradient-gold);
+    transition: width 0.3s ease;
+}
+
+.inventory-cell {
+    text-align: center;
+}
+
+.inventory-count {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.inventory-count.available {
+    color: #00D26A;
+}
+
+.inventory-count.sold {
+    color: var(--morocco-gold);
+}
+
+/* Action buttons in tables */
+.action-btns {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.action-btn.edit {
+    background: rgba(201, 162, 39, 0.2);
+    color: var(--morocco-gold);
+}
+
+.action-btn.edit:hover {
+    background: var(--morocco-gold);
+    color: var(--bg-primary);
+}
+
+.action-btn.delete {
+    background: rgba(193, 39, 45, 0.2);
+    color: #FF6B6B;
+}
+
+.action-btn.delete:hover {
+    background: var(--morocco-red);
+    color: white;
+}
+
+.action-btn.restock {
+    background: rgba(0, 168, 85, 0.2);
+    color: #00D26A;
+}
+
+.action-btn.restock:hover {
+    background: #00D26A;
+    color: var(--bg-primary);
+}
+
+.action-btn.view {
+    background: rgba(30, 77, 140, 0.2);
+    color: #4A90D9;
+}
+
+.action-btn.view:hover {
+    background: #4A90D9;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .admin-tabs {
+        justify-content: center;
+    }
+
+    .admin-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .inventory-filters {
+        flex-direction: column;
+    }
+
+    .search-input {
+        min-width: 100%;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   HEAD-TO-HEAD HISTORY SECTION
+   ======================================== */
+.h2h-section {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+}
+
+.h2h-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.h2h-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    min-width: 80px;
+}
+
+.h2h-stat.home-wins {
+    background: rgba(0, 168, 85, 0.1);
+    border: 1px solid rgba(0, 168, 85, 0.3);
+}
+
+.h2h-stat.draws {
+    background: rgba(201, 162, 39, 0.1);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.h2h-stat.away-wins {
+    background: rgba(193, 39, 45, 0.1);
+    border: 1px solid rgba(193, 39, 45, 0.3);
+}
+
+.h2h-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+}
+
+.h2h-stat.home-wins .h2h-value {
+    color: #00D26A;
+}
+
+.h2h-stat.away-wins .h2h-value {
+    color: #FF6B6B;
+}
+
+.h2h-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+}
+
+.h2h-meetings {
+    margin: 1.5rem 0;
+}
+
+.h2h-meetings h5 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.h2h-meeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--morocco-gold);
+}
+
+.meeting-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.meeting-competition {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    flex: 1;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.meeting-score {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+    background: rgba(201, 162, 39, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+}
+
+.h2h-significance {
+    padding: 1rem;
+    background: rgba(201, 162, 39, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    border-left: 4px solid var(--morocco-gold);
+}
+
+.h2h-significance strong {
+    color: var(--morocco-gold);
+}
+
+@media (max-width: 768px) {
+    .h2h-stats {
+        gap: 1rem;
+    }
+
+    .h2h-stat {
+        padding: 0.75rem 1rem;
+        min-width: 70px;
+    }
+
+    .h2h-meeting {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .meeting-competition {
+        padding: 0;
+    }
+}
+
+/* ========================================
+   BOOKING STEPS & CAPTCHA
+   ======================================== */
+.booking-steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.booking-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.booking-step.active {
+    opacity: 1;
+}
+
+.booking-step.completed {
+    opacity: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.booking-step.active .step-number {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+    border-color: var(--morocco-gold);
+}
+
+.booking-step.completed .step-number {
+    background: var(--morocco-green);
+    color: white;
+    border-color: var(--morocco-green);
+}
+
+.step-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.booking-step.active .step-label {
+    color: var(--morocco-gold);
+}
+
+.booking-step-content {
+    display: none;
+    padding: 2rem;
+}
+
+.booking-step-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Captcha Container */
+.captcha-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.captcha-container h4 {
+    margin-bottom: 0.5rem;
+    color: var(--morocco-gold);
+    font-size: 1.25rem;
+}
+
+.captcha-container p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.captcha-challenge {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.05) 100%);
+    border: 2px dashed var(--morocco-gold);
+    border-radius: var(--radius-lg);
+    padding: 2rem 3rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.captcha-question {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--morocco-gold);
+    font-family: monospace;
+}
+
+.captcha-input {
+    width: 100%;
+    max-width: 200px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.captcha-input:focus {
+    outline: none;
+    border-color: var(--morocco-gold);
+}
+
+/* Payment Form */
+.payment-form {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.payment-form h4 {
+    margin-bottom: 1.5rem;
+    color: var(--morocco-gold);
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Confirmation Summary */
+.confirmation-summary {
+    padding: 1.5rem;
+    background: rgba(0, 168, 85, 0.1);
+    border: 1px solid rgba(0, 168, 85, 0.3);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.confirmation-summary h4 {
+    color: #00D26A;
+    margin-bottom: 1rem;
+}
+
+.confirmation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.confirmation-item:last-child {
+    border-bottom: none;
+    padding-top: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .booking-steps {
+        gap: 1rem;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .captcha-challenge {
+        padding: 1.5rem 2rem;
+    }
+
+    .captcha-question {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================
+   ADMIN MODE STYLING
+   ======================================== */
+.exit-admin-btn {
+    margin-left: 1rem;
+    border-color: var(--morocco-gold) !important;
+    color: var(--morocco-gold) !important;
+}
+
+.exit-admin-btn:hover {
+    background: var(--morocco-gold) !important;
+    color: var(--bg-primary) !important;
+}
+
+body.admin-mode .header {
+    background: linear-gradient(135deg, rgba(193, 39, 45, 0.1) 0%, rgba(30, 77, 140, 0.1) 100%);
+    border-bottom-color: rgba(193, 39, 45, 0.3);
+}
+
+body.admin-mode .nav-link[data-section="admin"] {
+    background: var(--gradient-gold);
+    color: var(--bg-primary);
+}
