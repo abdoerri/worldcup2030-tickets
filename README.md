@@ -429,7 +429,7 @@ curl -X POST http://localhost:8080/api/bookings \
 
 ## 👨‍💻 Auteur
 
-**Abderrahman Ait Karim**  
+**Abderrahman erritouni*  
 Projet Java Avancé - 2025/2026
 
 ---
